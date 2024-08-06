@@ -20,8 +20,8 @@ firebase_admin.initialize_app(cred, {
 bucket = storage.bucket()
 
 cap = cv2.VideoCapture(1)
-cap.set(3, 640)
-cap.set(4, 480)
+cap.set(3, 673)
+cap.set(4, 491)
 
 imgBackground = cv2.imread('Resources/background.png')
 
@@ -56,8 +56,8 @@ while True:
     faceCurFrame = face_recognition.face_locations(imgS)
     encodeCurFrame = face_recognition.face_encodings(imgS, faceCurFrame)
 
-    imgBackground[162:162 + 480, 55:55 + 640] = img
-    imgBackground[44:44 + 633, 808:808 + 414] = imgModeList[modeType]
+    imgBackground[162:162 + 210, 55:55 + 221] = img
+    imgBackground[44:44 + 430, 808:808 + 520] = imgModeList[modeType]
 
     if faceCurFrame:
         for encodeFace, faceLoc in zip(encodeCurFrame, faceCurFrame):
@@ -107,14 +107,14 @@ while True:
                 else:
                     modeType = 3
                     counter = 0
-                    imgBackground[44:44 + 633, 808:808 + 414] = imgModeList[modeType]
+                    imgBackground[44:44 + 430, 808:808 + 520] = imgModeList[modeType]
 
             if modeType != 3:
 
                 if 10 < counter < 20:
                     modeType = 2
 
-                imgBackground[44:44 + 633, 808:808 + 414] = imgModeList[modeType]
+                imgBackground[44:44 + 430, 808:808 + 520] = imgModeList[modeType]
 
                 if counter <= 10:
                     cv2.putText(imgBackground, str(studentInfo['total_attendance']), (861, 125),
@@ -135,7 +135,7 @@ while True:
                     cv2.putText(imgBackground, str(studentInfo['name']), (808 + offset, 445),
                                 cv2.FONT_HERSHEY_COMPLEX, 1, (50, 50, 50), 1)
 
-                    imgBackground[175:175 + 216, 909:909 + 216] = imgStudent
+                    imgBackground[175:175 + 213, 909:909 + 218] = imgStudent
 
                 counter += 1
 
@@ -144,7 +144,7 @@ while True:
                     modeType = 0
                     studentInfo = []
                     imgStudent = []
-                    imgBackground[44:44 + 633, 808:808 + 414] = imgModeList[modeType]
+                    imgBackground[44:44 + 430, 808:808 + 520] = imgModeList[modeType]
     else:
         modeType = 0
         counter = 0
